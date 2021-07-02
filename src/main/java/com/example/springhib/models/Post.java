@@ -1,13 +1,16 @@
 package com.example.springhib.models;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
-//@EntityListeners(AuditingEntityListener.class)
+@EntityListeners(AuditingEntityListener.class)
 public class Post {
 
     @Id
@@ -16,8 +19,16 @@ public class Post {
     private String title;
     private String body;
 
+    @Column(updatable = false, nullable = false)
+    @CreatedDate
+    private LocalDateTime createdTime;
+
+    @Column(nullable = false)
+    @LastModifiedDate
+    private LocalDateTime updatedTime;
+
     @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
-    private Date createDate;
+    private Date authoredDate;
 
     public Post(){
 
@@ -47,12 +58,30 @@ public class Post {
         this.body = body;
     }
 
-    public Date getCreateDate() {
-        return createDate;
+    public LocalDateTime getCreatedTime() {
+        return createdTime;
     }
 
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
+    public void setCreatedTime(LocalDateTime createdTime) {
+        this.createdTime = createdTime;
+    }
+
+    public LocalDateTime getUpdatedTime() {
+        return updatedTime;
+    }
+
+    public void setUpdatedTime(LocalDateTime updatedTime) {
+        this.updatedTime = updatedTime;
+    }
+
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
+    public Date getAuthoredDate() {
+        return authoredDate;
+    }
+
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
+    public void setAuthoredDate(Date createDate) {
+        this.authoredDate = createDate;
     }
 
 }

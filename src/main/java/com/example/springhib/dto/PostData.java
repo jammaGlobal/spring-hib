@@ -12,8 +12,8 @@ public class PostData {
     private String body;
 
 
-    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
-    private Date createDate;
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="YYYY-MM-DD")
+    private Date authoredDate;
 
     public PostData(){
 
@@ -43,11 +43,13 @@ public class PostData {
         this.body = body;
     }
 
-    public Date getCreateDate() {
-        return createDate;
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="YYYY-MM-DD")
+    public Date getAuthoredDate() {
+        return authoredDate;
     }
 
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="YYYY-MM-DD")
+    public void setAuthoredDate(Date authoredDate) {
+        this.authoredDate = authoredDate;
     }
 }

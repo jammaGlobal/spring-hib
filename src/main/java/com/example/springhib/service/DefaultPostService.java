@@ -53,7 +53,7 @@ public class DefaultPostService implements PostService {
         postData.setId(post.getId());
         postData.setTitle(post.getTitle());
         postData.setBody(post.getBody());
-        postData.setCreateDate(post.getCreateDate());
+        postData.setAuthoredDate(post.getAuthoredDate());
 
 
         return postData;
@@ -63,8 +63,8 @@ public class DefaultPostService implements PostService {
         Post post = new Post();
         post.setTitle(postData.getTitle());
         post.setBody(postData.getBody());
-        post.setCreateDate(postData.getCreateDate());
-        post.setCreateDate(postData.getCreateDate());
+        post.setAuthoredDate(postData.getAuthoredDate());
+        //post.setAuthoredDate(postData.getAuthoredDate());
         return post;
     }
 }
