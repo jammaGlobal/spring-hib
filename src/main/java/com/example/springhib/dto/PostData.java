@@ -2,9 +2,13 @@ package com.example.springhib.dto;
 
 //Data Transfer Object
 
+import com.example.springhib.models.PostImage;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.util.Date;
+import java.util.List;
+
+//Can use lombok to replace all these getters and setters
 
 public class PostData {
     private Long id;
@@ -14,6 +18,8 @@ public class PostData {
 
     @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="YYYY-MM-DD")
     private Date authoredDate;
+
+    private List<PostImage> postImages;
 
     public PostData(){
 
@@ -51,5 +57,13 @@ public class PostData {
     @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="YYYY-MM-DD")
     public void setAuthoredDate(Date authoredDate) {
         this.authoredDate = authoredDate;
+    }
+
+    public List<PostImage> getPostImages() {
+        return postImages;
+    }
+
+    public void setPostImages(List<PostImage> postImages) {
+        this.postImages = postImages;
     }
 }
