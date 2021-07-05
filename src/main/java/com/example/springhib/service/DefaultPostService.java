@@ -25,7 +25,13 @@ public class DefaultPostService implements PostService {
 
     public PostData savePost(PostData post) {
         Post postModel = populatePostEntity(post);
-        return populatePostData(postRepository.save(postModel)); //Error here
+
+        Post savedPost = postRepository.save(postModel);
+        (postModel.getPostImages()).forEach(img ->{
+            img.setPost(savedPost);
+            postImageRepository.save(img);
+        });
+        return populatePostData(savedPost); //Error here
     }
 
 

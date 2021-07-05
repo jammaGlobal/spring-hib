@@ -1,26 +1,15 @@
-package com.example.springhib.models;
+package com.example.springhib.dto;
 
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import com.example.springhib.models.Post;
 
 import javax.persistence.*;
 
-@Entity
-@EntityListeners(AuditingEntityListener.class)
-public class PostImage {
-    @Id
-    @GeneratedValue
+public class PostImageData {
     private Long pImgId;
-
     private String imageLocation;   //This will be an index to the file system. In this case it will be on our server's filesystem.
     private String imgCaption;      //This might be kept in the markdown file, if so use this string as a general description.
+    //private Post post;
 
-    @ManyToOne
-    @JoinColumn(name="id", nullable = false)
-    private Post post;
-
-    public PostImage(){
-
-    }
 
     public Long getpImgId() {
         return pImgId;
@@ -46,11 +35,11 @@ public class PostImage {
         this.imgCaption = imgCaption;
     }
 
-    public Post getPost() {
-        return null;
-    }
-
-    public void setPost(Post post) {
-        this.post = post;
-    }
+//    public Post getPost() {
+//        return post;
+//    }
+//
+//    public void setPost(Post post) {
+//        this.post = post;
+//    }
 }
